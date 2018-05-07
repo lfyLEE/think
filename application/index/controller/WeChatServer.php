@@ -8,22 +8,35 @@
 
 namespace app\index\controller;
 
-use GuzzleHttp\Client;
+use EasyWeChat\Factory;
 
 class WeChatServer
 {
+
     /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \EasyWeChat\Kernel\Exceptions\BadRequestException
+     * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
+     * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
      */
     public function valid()
     {
-        $client = new Client([
-            // Base URI is used with relative requests
-            'base_uri' => 'http://readooapi.youshu.cc',
-            // You can set any number of default request options.
-            'timeout'  => 2.0,
-        ]);
-        $result = $client->request('GET', '/Wxpay/getPlanInfo?plan_id=66');
-        dump($result);
+        $config = [
+            'app_id' => 'wx14c234c622a85b21',
+            'secret' => '7a7cb78c2d86044fad4de7192bacd1aa',
+
+            'response_type' => 'array',
+
+            'log' => [
+                'level' => 'debug',
+                'file' => RUNTIME_PATH . 'log/wechat.log',
+            ],
+        ];
+
+        $app = Factory::officialAccount($config);
+
+        $response = $app->server->serve();
+
+        // 将响应输出
+        $response->send();
     }
 }

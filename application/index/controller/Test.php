@@ -12,6 +12,6 @@ namespace app\index\controller;
 class Test
 {
     public function ttt() {
-        echo 'hello';
+        phpinfo();
     }
 }
