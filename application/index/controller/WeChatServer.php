@@ -18,7 +18,7 @@ class WeChatServer
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
      */
-    public function valid()
+    public function run()
     {
         $config = [
             'app_id' => 'wx14c234c622a85b21',
