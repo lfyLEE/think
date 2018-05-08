@@ -13,5 +13,6 @@ class Test
 {
     public function ttt() {
         phpinfo();
+
     }
 }
