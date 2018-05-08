@@ -31,7 +31,9 @@ class WeChatServer
         ];
 
         $app = Factory::officialAccount($config);
-        $app->server->push("您好！欢迎使用 EasyWeChat! hello world!");
+        $app->server->push(function ($message) {
+            return "您好！欢迎使用 EasyWeChat!";
+        });
         $response = $app->server->serve();
 
         // 将响应输出
