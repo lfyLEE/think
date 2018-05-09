@@ -8,10 +8,8 @@
 
 namespace app\index\controller;
 
-use {
-    EasyWeChat\Factory,
-    think\Log
-};
+use EasyWeChat\Factory;
+use think\{log,model};
 
 class WeChatServer
 {
