@@ -94,10 +94,11 @@ class WeChat
         $app->template_message->send([
             'touser' => $open_id,
             'template_id' => $template_id,
-            'url' => 'https://easywechat.org',
+            'url' => 'http://www.biubiupiu.site',
             'data' => [
-                'key1' => 'VALUE',
-                'key2' => 'VALUE2',
+                'key1' => '你好',
+                'key2' => 'biubiu',
+                'key3' => 'piu',
             ],
         ]);
     }
