@@ -7,7 +7,8 @@
  */
 
 namespace app\service;
-
+use EasyWeChat\Factory;
+use think\Log;
 
 class WeChat
 {
@@ -34,6 +35,11 @@ class WeChat
         return 'hello 世界';
     }
 
+    /**
+     * @param $message
+     * @return string
+     * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
+     */
     public function eventResponse($message): string
     {
         switch ($message['MsgType']) {
@@ -44,6 +50,8 @@ class WeChat
                 return '收到文字消息';
                 break;
             case 'image':
+                Log::write(json_encode($message), 'debug');
+                $this->send($message, 'wV9TgcdC10jTy5LwfvybqHPitsu4NQVuUbRk7jyyPaA');
                 return '收到图片消息';
                 break;
             case 'voice':
@@ -65,5 +73,33 @@ class WeChat
                 return '收到其它消息';
                 break;
         }
+    }
+
+    /**
+     * @param $open_id
+     * @param $template_id
+     * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
+     */
+    public function send($open_id, $template_id) {
+        $config = [
+            'app_id' => 'wx14c234c622a85b21',
+            'secret' => '7a7cb78c2d86044fad4de7192bacd1aa',
+            'response_type' => 'array',
+            'log' => [
+                'level' => 'debug',
+                'file' => RUNTIME_PATH . 'log/wechat.log',
+            ],
+        ];
+
+        $app = Factory::officialAccount($config);
+        $app->template_message->send([
+            'touser' => $open_id,
+            'template_id' => $template_id,
+            'url' => 'https://easywechat.org',
+            'data' => [
+                'key1' => 'VALUE',
+                'key2' => 'VALUE2',
+            ],
+        ]);
     }
 }
