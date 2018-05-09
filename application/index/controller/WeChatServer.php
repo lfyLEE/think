@@ -12,7 +12,7 @@ use EasyWeChat\Factory;
 use think\log;
 use app\service\WeChat;
 
-class WeChatServer extends \think\controller
+class WeChatServer
 {
 
     /**
