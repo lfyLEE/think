@@ -48,7 +48,7 @@ class WeChat
                 break;
             case 'text':
                 $this->send($message['FromUserName'], 'wV9TgcdC10jTy5LwfvybqHPitsu4NQVuUbRk7jyyPaA');
-                return '';
+                return json_encode($message);
                 break;
             case 'image':
                 return '收到图片消息';
