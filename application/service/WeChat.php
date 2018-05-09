@@ -96,10 +96,10 @@ class WeChat
             'template_id' => $template_id,
             'url' => 'http://www.biubiupiu.site',
             'data' => [
-                'first' => '你好',
-                'keyword1' => 'biubiu',
-                'keyword2' => 'piu',
-                'keyword3' => 'da',
+                'first' => ['你好', '#F00'],
+                'keyword1' => 'biu',
+                'keyword2' => 'biu',
+                'keyword3' => 'piu',
             ],
         ]);
     }
