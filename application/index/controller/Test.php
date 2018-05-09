@@ -7,12 +7,12 @@
  */
 
 namespace app\index\controller;
-
+use app\service\WeChat;
 
 class Test
 {
     public function ttt() {
-        phpinfo();
+        echo WeChat::test();
 
     }
 }
