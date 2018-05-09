@@ -50,8 +50,7 @@ class WeChat
                 return '收到文字消息';
                 break;
             case 'image':
-                Log::write(json_encode($message), 'debug');
-                $this->send($message, 'wV9TgcdC10jTy5LwfvybqHPitsu4NQVuUbRk7jyyPaA');
+                $this->send($message['FromUserName'], 'wV9TgcdC10jTy5LwfvybqHPitsu4NQVuUbRk7jyyPaA');
                 return '收到图片消息';
                 break;
             case 'voice':
