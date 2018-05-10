@@ -32,11 +32,11 @@ class WeChat
 
     public static function test(): string
     {
-        return 'hello 世界';
+        return 'hello';
     }
 
     /**
-     * @param $message
+     * @param $message {"ToUserName":"gh_d0c8db9ba4bc","FromUserName":"o4nBjwWvi2gM2wnk7kRMqkgha3c0","CreateTime":"1525870101","MsgType":"text","Content":"a","MsgId":"6553562182312353424"} toArray
      * @return string
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
      */
