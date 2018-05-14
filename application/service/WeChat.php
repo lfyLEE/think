@@ -24,10 +24,10 @@ class WeChat
 
     public static function getInstance(): WeChat
     {
-        if (self::$instance instanceof self) {
-            return self::$instance;
+        if (!self::$instance instanceof self) {
+            self::$instance = new self();
         }
-        return new self();
+        return self::$instance;
     }
 
     public static function test(): string
