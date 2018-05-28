@@ -11,8 +11,8 @@ use app\service\WeChat;
 
 class Test
 {
-    public function ttt() {
-        echo WeChat::test();
-
+    public function testConfig() {
+        $data = parse_ini_file(ROOT_PATH . '/config.ini', true, 1);
+        dump($data);
     }
 }
