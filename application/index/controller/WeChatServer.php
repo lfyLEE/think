@@ -23,8 +23,7 @@ class WeChatServer
     public function run()
     {
         Log::write(file_get_contents('php://input'), 'debug');
-        echo '';
-        exit;
+
         $config = [
             'app_id' => 'wx14c234c622a85b21',
             'secret' => '7a7cb78c2d86044fad4de7192bacd1aa',
