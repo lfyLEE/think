@@ -154,6 +154,10 @@ class WeChat
             'app_id' => $wechat_config['appId'],
             'secret' => $wechat_config['appSecret'],
             'response_type' => 'array',
+            'log' => [
+                'level' => 'debug',
+                'file'  => '/webdata/think/runtime/log/', // XXX: 绝对路径！！！！
+            ],
         ];
 
         $app = Factory::officialAccount($config);
