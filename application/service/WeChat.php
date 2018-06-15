@@ -8,7 +8,6 @@
 
 namespace app\service;
 use EasyWeChat\Factory;
-use think\Log;
 
 class WeChat
 {
@@ -115,6 +114,9 @@ class WeChat
                 break;
             case 'text':
                 $data = json_encode($message);
+                if ($message['Content'] == 'template') {
+                    $this->send($message['ToUserName'], $message['FromUserName']);
+                }
                 break;
             case 'image':
                 $data = '收到图片消息';
@@ -146,21 +148,18 @@ class WeChat
      * @param $template_id
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
      */
-    public function send($open_id, $template_id) {
+    public function send($wechat, $open_id) {
+        $wechat_config = \app\common\Config::getWeChatConfig($wechat);
         $config = [
-            'app_id' => 'wx14c234c622a85b21',
-            'secret' => '7a7cb78c2d86044fad4de7192bacd1aa',
+            'app_id' => $wechat_config['appId'],
+            'secret' => $wechat_config['appSecret'],
             'response_type' => 'array',
-            'log' => [
-                'level' => 'debug',
-                'file' => RUNTIME_PATH . 'log/wechat.log',
-            ],
         ];
 
         $app = Factory::officialAccount($config);
         $app->template_message->send([
             'touser' => $open_id,
-            'template_id' => $template_id,
+            'template_id' => $wechat_config['templateId'],
             'url' => 'http://www.biubiupiu.site',
             'data' => [
                 'first' => ['你好', '#F00'],
