@@ -10,7 +10,9 @@ namespace app\index\controller;
 
 use EasyWeChat\Factory;
 use think\log;
+use think\Request;
 use app\service\WeChat;
+use app\common\Config;
 
 class WeChatServer
 {
@@ -23,9 +25,13 @@ class WeChatServer
     public function run()
     {
         Log::write(file_get_contents('php://input'), 'debug');
+        $wechat = Request::instance()->get('wechat');
+        if (!$wechat) exit('success');
+        $wechat_config = Config::getWeChatConfig($wechat);
+        if (!$wechat_config) exit('success');
         $config = [
-            'app_id' => 'wx14c234c622a85b21',
-            'secret' => '7a7cb78c2d86044fad4de7192bacd1aa',
+            'app_id' => $wechat_config['appId'],
+            'secret' => $wechat_config['appSecret'],
             'response_type' => 'array',
             /*'log' => [
                 'level' => 'debug',
