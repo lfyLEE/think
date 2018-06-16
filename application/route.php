@@ -19,6 +19,7 @@ return [
     ],
     'wechat/run' => 'WeChatServer/run',
     'test/plan' => 'Test/getPlanInfo',
-    'test/google' => 'Test/google',
+    'google' => 'Test/google',
+    'baidu' => 'Test/baiDu',
 
 ];

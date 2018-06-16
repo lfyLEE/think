@@ -33,4 +33,10 @@ class Test
         header('content-type:text/html; charset=utf-8');
         exit($response->getBody());
     }
+    public function baiDu() {
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get('http://www.baidu.com');
+        header('content-type:text/html; charset=utf-8');
+        exit($response->getBody());
+    }
 }
