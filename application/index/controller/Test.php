@@ -25,4 +25,12 @@ class Test
         header('content-type:application/json; charset=utf-8');
         exit($response->getBody());
     }
+
+    public function google()
+    {
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get('http://www.google.com');
+        header('content-type:application/json; charset=utf-8');
+        exit($response->getBody());
+    }
 }

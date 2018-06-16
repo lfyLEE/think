@@ -17,7 +17,8 @@ return [
         ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
         ':name' => ['index/hello', ['method' => 'post']],
     ],
-    'wechat/run'   => 'WeChatServer/run',
-    'test/plan'   => 'Test/getPlanInfo',
+    'wechat/run' => 'WeChatServer/run',
+    'test/plan' => 'Test/getPlanInfo',
+    'test/google' => 'Test/google',
 
 ];
