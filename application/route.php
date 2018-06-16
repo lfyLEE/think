@@ -18,5 +18,6 @@ return [
         ':name' => ['index/hello', ['method' => 'post']],
     ],
     'wechat/run'   => 'WeChatServer/run',
+    'test/plan'   => 'Test/getPlanInfo',
 
 ];
