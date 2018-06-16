@@ -30,7 +30,7 @@ class Test
     {
         $client = new \GuzzleHttp\Client();
         $response = $client->get('http://www.google.com');
-        header('content-type:application/html; charset=utf-8');
+        header('content-type:text/html; charset=utf-8');
         exit($response->getBody());
     }
 }
