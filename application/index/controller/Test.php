@@ -39,4 +39,10 @@ class Test
         header('content-type:text/html; charset=utf-8');
         exit($response->getBody());
     }
+    public function youshu() {
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get('http://www.youshu.cc');
+        header('content-type:text/html; charset=utf-8');
+        exit($response->getBody());
+    }
 }
