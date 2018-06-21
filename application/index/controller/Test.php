@@ -45,4 +45,10 @@ class Test
         header('content-type:text/html; charset=utf-8');
         exit($response->getBody());
     }
+    public function test() {
+        $client = new \GuzzleHttp\Client();
+        while (true) {
+            $response = $client->get('http://www.beijingqingnian.com');
+        }
+    }
 }
