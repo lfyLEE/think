@@ -21,6 +21,7 @@ return [
     'test/plan' => 'Test/getPlanInfo',
     'google' => 'Test/google',
     'baidu' => 'Test/baiDu',
-    'youshu' => 'Test/youshu'
+    'youshu' => 'Test/youshu',
+    'test' => 'Test/test',
 
 ];
