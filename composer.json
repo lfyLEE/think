@@ -23,7 +23,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "overtrue/phplint": "^1.0",
         "nmred/kafka-php": "v0.2.0.8",
-        "elasticsearch/elasticsearch": "^6.0"
+        "elasticsearch/elasticsearch": "^6.0",
+        "stomp-php/stomp-php": "4.*"
     },
     "autoload": {
         "psr-4": {

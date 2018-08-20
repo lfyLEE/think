@@ -15,9 +15,9 @@ use EasyWeChat\Kernel\Contracts\AccessTokenInterface;
 use EasyWeChat\Kernel\Http\Response;
 use EasyWeChat\Kernel\Traits\HasHttpRequests;
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\Middleware;
-use Monolog\Logger;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -189,13 +189,13 @@ class BaseClient
     }
 
     /**
-     * Return GuzzleHttp\Client instance.
+     * Return GuzzleHttp\ClientInterface instance.
      *
-     * @return \GuzzleHttp\Client
+     * @return ClientInterface
      */
-    public function getHttpClient(): Client
+    public function getHttpClient(): ClientInterface
     {
-        if (!($this->httpClient instanceof Client)) {
+        if (!($this->httpClient instanceof ClientInterface)) {
             $this->httpClient = $this->app['http_client'] ?? new Client();
         }
 
@@ -262,7 +262,7 @@ class BaseClient
                 // Retry on server errors
                 $response = json_decode($body, true);
 
-                if (!empty($response['errcode']) && in_array(abs($response['errcode']), [40001, 42001], true)) {
+                if (!empty($response['errcode']) && in_array(abs($response['errcode']), [40001, 40014, 42001], true)) {
                     $this->accessToken->refresh();
                     $this->app['logger']->debug('Retrying with refreshed access token.');
 

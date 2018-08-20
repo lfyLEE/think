@@ -106,6 +106,12 @@ class LintCommand extends Command
                 'Path to the cache file.'
             )
             ->addOption(
+                'no-progress',
+                null,
+                InputOption::VALUE_NONE,
+                'Hide the progress output.'
+            )
+            ->addOption(
                 'json',
                 null,
                 InputOption::VALUE_OPTIONAL,
@@ -139,7 +145,7 @@ class LintCommand extends Command
      * @param InputInterface  $input  An InputInterface instance
      * @param OutputInterface $output An OutputInterface instance
      *
-     * @throws LogicException When this abstract method is not implemented
+     * @throws \LogicException When this abstract method is not implemented
      *
      * @return null|int null or 0 if everything went fine, or an error code
      *
@@ -205,7 +211,7 @@ class LintCommand extends Command
         }
 
         if (!empty($options['json'])) {
-            $this->dumpResult($options['json'], $errors, $options, [
+            $this->dumpResult((string) $options['json'], $errors, $options, [
                 'time_usage' => $timeUsage,
                 'memory_usage' => $memUsage,
                 'using_cache' => 'Yes' == $usingCache,
@@ -230,7 +236,7 @@ class LintCommand extends Command
             'errors' => $errors,
         ];
 
-        \file_put_contents((string) $path, \json_encode(\array_merge($result, $context)));
+        \file_put_contents($path, \json_encode(\array_merge($result, $context)));
     }
 
     /**
@@ -248,8 +254,9 @@ class LintCommand extends Command
         $cache = !$input->getOption('no-cache');
         $maxColumns = floor((new Terminal())->getWidth() / 2);
         $verbosity = $output->getVerbosity();
+        $displayProgress = !$input->getOption('no-progress');
 
-        $linter->setProcessCallback(function ($status, SplFileInfo $file) use ($output, $verbosity, $fileCount, $maxColumns) {
+        $displayProgress && $linter->setProcessCallback(function ($status, SplFileInfo $file) use ($output, $verbosity, $fileCount, $maxColumns) {
             static $i = 1;
 
             $percent = floor(($i / $fileCount) * 100);
@@ -267,6 +274,8 @@ class LintCommand extends Command
             }
             ++$i;
         });
+
+        $displayProgress || $output->write('<info>Checking...</info>');
 
         return $linter->lint([], $cache);
     }
@@ -420,6 +429,8 @@ class LintCommand extends Command
             return $configuration;
         } catch (ParseException $e) {
             $this->output->writeln(sprintf('<error>Unable to parse the YAML string: %s</error>', $e->getMessage()));
+
+            return [];
         }
     }
 }

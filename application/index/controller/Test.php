@@ -26,29 +26,15 @@ class Test
         exit($response->getBody());
     }
 
-    public function google()
+    /**
+     * @throws \Stomp\Exception\StompException
+     */
+    public function test()
     {
-        $client = new \GuzzleHttp\Client();
-        $response = $client->get('http://www.google.com');
-        header('content-type:text/html; charset=utf-8');
-        exit($response->getBody());
-    }
-    public function baiDu() {
-        $client = new \GuzzleHttp\Client();
-        $response = $client->get('http://www.baidu.com');
-        header('content-type:text/html; charset=utf-8');
-        exit($response->getBody());
-    }
-    public function youshu() {
-        $client = new \GuzzleHttp\Client();
-        $response = $client->get('http://www.youshu.cc');
-        header('content-type:text/html; charset=utf-8');
-        exit($response->getBody());
-    }
-    public function test() {
-        $client = new \GuzzleHttp\Client();
-        while (true) {
-            $response = $client->get('http://www.beijingqingnian.com');
-        }
+        $stomp = new \Stomp\Client('tcp://120.55.85.21:61613');
+        $stomp->setLogin('admin', 'youshuccadmin');
+        $stomp->connect();
+        $res = $stomp->send('/queue/test', '{"key":123}');
+        dump($res);
     }
 }

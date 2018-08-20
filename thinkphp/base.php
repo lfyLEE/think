@@ -9,7 +9,7 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-define('THINK_VERSION', '5.0.19');
+define('THINK_VERSION', '5.0.21');
 define('THINK_START_TIME', microtime(true));
 define('THINK_START_MEM', memory_get_usage());
 define('EXT', '.php');
@@ -27,7 +27,6 @@ defined('LOG_PATH') or define('LOG_PATH', RUNTIME_PATH . 'log' . DS);
 defined('CACHE_PATH') or define('CACHE_PATH', RUNTIME_PATH . 'cache' . DS);
 defined('TEMP_PATH') or define('TEMP_PATH', RUNTIME_PATH . 'temp' . DS);
 defined('CONF_PATH') or define('CONF_PATH', APP_PATH); // 配置文件目录
-defined('CONFIG_PATH') or define('CONFIG_PATH', ROOT_PATH . 'config/'); // 配置文件目录
 defined('CONF_EXT') or define('CONF_EXT', EXT); // 配置文件后缀
 defined('ENV_PREFIX') or define('ENV_PREFIX', 'PHP_'); // 环境变量的配置前缀
 

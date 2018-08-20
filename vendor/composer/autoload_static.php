@@ -10,6 +10,7 @@ class ComposerStaticInit34a41e2841af1a67f3ddef099fc7b348
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'ad155f8f1cf0d418fe49e248db8c661b' => __DIR__ . '/..' . '/react/promise/src/functions_include.php',
         'e8aa6e4b5a1db2f56ae794f1505391a8' => __DIR__ . '/..' . '/amphp/amp/lib/functions.php',
@@ -30,6 +31,7 @@ class ComposerStaticInit34a41e2841af1a67f3ddef099fc7b348
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\Process\\' => 26,
             'Symfony\\Component\\HttpFoundation\\' => 33,
@@ -37,6 +39,7 @@ class ComposerStaticInit34a41e2841af1a67f3ddef099fc7b348
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Cache\\' => 24,
             'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
+            'Stomp\\' => 6,
         ),
         'R' => 
         array (
@@ -97,6 +100,10 @@ class ComposerStaticInit34a41e2841af1a67f3ddef099fc7b348
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
         'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
@@ -124,6 +131,10 @@ class ComposerStaticInit34a41e2841af1a67f3ddef099fc7b348
         'Symfony\\Bridge\\PsrHttpMessage\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/psr-http-message-bridge',
+        ),
+        'Stomp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stomp-php/stomp-php/src',
         ),
         'React\\Promise\\' => 
         array (
