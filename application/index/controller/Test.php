@@ -27,14 +27,10 @@ class Test
     }
 
     /**
-     * @throws \Stomp\Exception\StompException
+     *
      */
     public function test()
     {
-        $stomp = new \Stomp\Client('tcp://120.55.85.21:61613');
-        $stomp->setLogin('admin', 'youshuccadmin');
-        $stomp->connect();
-        $res = $stomp->send('/queue/test', '{"key":123}');
-        dump($res);
+        phpinfo();
     }
 }

@@ -13,6 +13,8 @@
 
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
+//加载阿里云sdk
+require_once __DIR__ . '/../vendor/aliyun-openapi-php-sdk/aliyun-php-sdk-core/Config.php';
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';
 //加载第三方类库
